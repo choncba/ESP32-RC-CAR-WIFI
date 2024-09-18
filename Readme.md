@@ -20,3 +20,16 @@
   - ESPAsyncWebServer
   - AsyncTCP
 - [Web Sockets Server](https://randomnerdtutorials.com/esp32-websocket-server-arduino/)
+- [HTML 5 Joystick](https://github.com/bobboteck/JoyStick)
+
+## Working Samples
+- WiFi Manager
+  - Copy ./samples/wifi-manager.cpp to ./src and rename it to main.cpp
+  - Copy ./web/wifi-manager/ files to ./data
+  - Platform -> Build & Upload Filesystem
+  - Platform -> Build & Upload Code
+- Websockets Server
+  - Copy ./samples/ws-server.cpp to ./src and rename it to main.cpp
+  - Copy ./web/websockets-server/ files to ./data
+  - Platform -> Build & Upload Filesystem
+  - Platform -> Build & Upload Code
