@@ -28,9 +28,31 @@ function onMessage(event) {
 
 window.addEventListener('load', onLoad);
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function onLoad(event) {
   initWebSocket();
   initButton();
+  
+  // Asi logro que lo mande cuando cambia, pero se va de viaje el esp sin el setTimeout(100)
+  // Object.defineProperty(StickStatus,'x',{
+  //   set: function(value){
+  //     this._x = value;
+  //     websocket.send(JSON.stringify({x:StickStatus._xPosition,y:StickStatus._yPosition}));
+  //     setTimeout(100);
+  //   }
+  // });
+
+  // Object.defineProperty(StickStatus,'y',{
+  //   set: function(value){
+  //     this._y = value;
+  //     websocket.send(JSON.stringify({x:StickStatus._x,y:StickStatus._y}));
+  //     setTimeout(100);
+  //   }
+  // });
+  setInterval(function(){ sendJoyData(); }, 100);
 }
 
 function initButton() {
@@ -40,3 +62,8 @@ function initButton() {
 function toggle(){
   websocket.send('toggle');
 }
+
+function sendJoyData(){
+  websocket.send(JSON.stringify({x:StickStatus.x,y:StickStatus.y}));
+}
+

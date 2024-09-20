@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="ws-server.css">
 <script src="ws-server.js"></script>
-<script src="joy.min.js"></script>
+<script src="joy.js"></script>
 </head>
 <body>
   <div class="topnav">
@@ -22,12 +22,33 @@
       <p class="state">state: <span id="state">%STATE%</span></p>
       <p><button id="button" class="button">Toggle</button></p>
     </div>
-    <div class="card">
-      <div id="joyDiv" style="width:200px;height:200px;margin-bottom:20px;"></div>
+    <br>
+    <div class="card card-h">
+      <div id="joyDiv" style="width:200px;height:200px;"></div>
+      <!-- <div style="position:fixed;bottom:125px;left:750px;"> -->
+      <div>
+        X Position:<input id="joyPosX" type="text" /><br />
+        Y Position:<input id="joyPosY" type="text" /><br />
+        Direction:<input id="joyDir" type="text" /><br />
+        X :<input id="joyX" type="text" /></br>
+        Y :<input id="joyY" type="text" />
+      </div>
     </div>
   </div>
   <script type="text/javascript">
-    var joy = new JoyStick('joyDiv');
+    var Joy = new JoyStick('joyDiv');
+    
+    var joyInputPosX = document.getElementById("joyPosX");
+    var joyInputPosY = document.getElementById("joyPosY");
+    var joyDirection = document.getElementById("joyDir");
+    var joyX = document.getElementById("joyX");
+    var joyY = document.getElementById("joyY");
+    
+    setInterval(function(){ joyInputPosX.value=Joy.GetPosX(); }, 50);
+    setInterval(function(){ joyInputPosY.value=Joy.GetPosY(); }, 50);
+    setInterval(function(){ joyDirection.value=Joy.GetDir(); }, 50);
+    setInterval(function(){ joyX.value=Joy.GetX(); }, 50);
+    setInterval(function(){ joyY.value=Joy.GetY(); }, 50);
   </script>
 </body>
 </html>

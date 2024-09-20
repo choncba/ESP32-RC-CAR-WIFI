@@ -199,6 +199,7 @@
                  movedX -= canvas.offsetParent.offsetLeft;
                  movedY -= canvas.offsetParent.offsetTop;
              }
+
              // Delete canvas
              context.clearRect(0, 0, canvas.width, canvas.height);
              // Redraw object
@@ -398,7 +399,7 @@
       */
      this.GetX = function ()
      {
-         return (100*((movedX - centerX)/maxMoveStick)).toFixed();
+        return (100*((movedX - centerX)/maxMoveStick)).toFixed();
      };
  
      /**
@@ -407,7 +408,7 @@
       */
      this.GetY = function ()
      {
-         return ((100*((movedY - centerY)/maxMoveStick))*-1).toFixed();
+        return ((100*((movedY - centerY)/maxMoveStick))*-1).toFixed();
      };
  
      /**
@@ -419,5 +420,3 @@
          return getCardinalDirection();
      };
  });
-
- export default JoyStick;
