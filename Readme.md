@@ -1,4 +1,4 @@
-# Web Browser / WiFi Controled RC Car
+samples# Web Browser / WiFi Controled RC Car
 
 ## Hardware
 - 2 Brushless Motor's RC Car, rescued from old broken toy
@@ -21,6 +21,13 @@
   - AsyncTCP
 - [Web Sockets Server](https://randomnerdtutorials.com/esp32-websocket-server-arduino/)
 - [HTML 5 Joystick](https://github.com/bobboteck/JoyStick)
+
+## BLE Version
+- Copy ./samples/remote_XY_ble.cpp to ./src and rename to main.cpp
+- Platform -> Erase Flash
+- Platform -> Upload
+- Install RemoteXY on mobile or tablet: https://remotexy.com/en/download/
+- Add `BT-CAR-ESP32` BLE device on RemoteXY or scan this QR<br><br>![](remote_xy_qr.png)
 
 ## Working Samples
 - WiFi Manager
