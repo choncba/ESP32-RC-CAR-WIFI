@@ -1,4 +1,4 @@
-samples# Web Browser / WiFi Controled RC Car
+# Web Browser / WiFi Controlled RC Car
 
 ## Hardware
 - 2 Brushless Motor's RC Car, rescued from old broken toy
