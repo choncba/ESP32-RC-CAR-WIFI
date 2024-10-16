@@ -52,7 +52,9 @@ function onLoad(event) {
   //     setTimeout(100);
   //   }
   // });
-  setInterval(function(){ sendJoyData(); }, 100);
+  // setInterval(function(){ sendJoyData(); }, 100);
+
+  setInterval(function(){ sendSliderData(); }, 100);
 }
 
 function initButton() {
@@ -65,5 +67,11 @@ function toggle(){
 
 function sendJoyData(){
   websocket.send(JSON.stringify({x:StickStatus.x,y:StickStatus.y}));
+}
+
+function sendSliderData(){
+  var sliderDir = document.getElementById("sliderDir");
+  var sliderSent = document.getElementById("sliderSent");
+  websocket.send(JSON.stringify({x:sliderDir.value,y:sliderSent.value}));
 }
 

@@ -23,6 +23,19 @@
       <p><button id="button" class="button">Toggle</button></p>
     </div>
     <br>
+    <div class="card">
+      <h2>Dirección</h2>
+      <h3 id="sliderDirValue"></h3>
+      <div class="slidecontainer">
+        <input type="range" min="-100" max="100" value="0" class="slider" id="sliderDir">
+      </div>
+      <h2>Sentido</h2>
+      <h3 id="sliderSentValue"></h3>
+      <div class="slidecontainer">
+        <input type="range" min="-100" max="100" value="0" class="slider" id="sliderSent">
+      </div>
+    </div>
+    <br>
     <div class="card card-h">
       <div id="joyDiv" style="width:200px;height:200px;"></div>
       <!-- <div style="position:fixed;bottom:125px;left:750px;"> -->
@@ -49,6 +62,17 @@
     setInterval(function(){ joyDirection.value=Joy.GetDir(); }, 50);
     setInterval(function(){ joyX.value=Joy.GetX(); }, 50);
     setInterval(function(){ joyY.value=Joy.GetY(); }, 50);
+
+    // Sliders
+    var sliderDir = document.getElementById("sliderDir");
+    var outputDir = document.getElementById("sliderDirValue");
+    outputDir.innerHTML = sliderDir.value;
+    sliderDir.oninput = function() { outputDir.innerHTML = this.value; }
+
+    var sliderSent = document.getElementById("sliderSent");
+    var outputSent = document.getElementById("sliderSentValue");
+    outputSent.innerHTML = sliderSent.value;
+    sliderSent.oninput = function() { outputSent.innerHTML = this.value; }
   </script>
 </body>
 </html>
