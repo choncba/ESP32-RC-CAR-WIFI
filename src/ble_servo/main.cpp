@@ -78,6 +78,8 @@ struct commands
   uint8_t rear_direction = 0; // 0 Forward - 1 Reverse
   uint8_t rear_speed = 0;
 }current_command, prev_command;
+
+uint8_t connected = 0; // Connection flag
  
 void handleCommand(){
   
@@ -111,6 +113,17 @@ void handleCommand(){
   }
 }
 
+// Set default car position
+void SetDefault(){
+  current_command.pos = DEFAULT_POS; // Center
+  current_command.rear_direction = 0;
+  current_command.rear_speed = 0;
+  FrontServo.write(current_command.pos);
+  digitalWrite(REAR_RELAY, current_command.rear_direction);
+  RearMotor.write(current_command.rear_speed);
+  digitalWrite(REAR_LIGHTS, LOW);
+}
+
 void setup() 
 {
   ESP32PWM::allocateTimer(0);
@@ -125,13 +138,7 @@ void setup()
   
   RemoteXY_Init (); 
 
-  current_command.pos = DEFAULT_POS; // Center
-  current_command.rear_direction = 0;
-  current_command.rear_speed = 0;
-  FrontServo.write(current_command.pos);
-  digitalWrite(REAR_RELAY, current_command.rear_direction);
-  RearMotor.write(current_command.rear_speed);
-  digitalWrite(REAR_LIGHTS, LOW);
+  SetDefault();
 
   prev_time = millis();
 }
@@ -149,6 +156,12 @@ void loop()
       current_command.front_lights = digitalRead(FRONT_LIGHTS);
       prev_time = millis();
     }
+  }
+
+  // Sets default state when disconnected
+  if(connected != RemoteXY.connect_flag){
+    if(connected) SetDefault();
+    connected = RemoteXY.connect_flag;
   }
   
 }
